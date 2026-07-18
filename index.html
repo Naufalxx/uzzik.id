@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uzzik.ID — Showroom Digital Car Parking Multiplayer 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <nav>
+    <div class="logo">UZZIK<span>.ID</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#katalog">Katalog</a>
+      <a href="#cara-order">Cara Order</a>
+      <a href="#testimoni">Testimoni</a>
+      <a href="#faq">FAQ</a>
+      <a href="#kontak">Kontak</a>
+    </div>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <button class="cart-btn" onclick="openCart()">🛒 <span class="long">Keranjang</span> <span class="cart-count" id="cartCount">0</span></button>
+      <a class="nav-cta" href="#katalog"><span class="long">Mulai</span> Order</a>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Showroom Digital · Car Parking Multiplayer 2</div>
+      <h1>Koleksi mobil &amp; item <em>langka</em> untuk garasi CPM2‑mu.</h1>
+      <p class="lead">Uzzik.ID menjual mobil custom, livery eksklusif, koin, dan akun Car Parking Multiplayer 2 dengan proses serah‑terima cepat, aman, dan bergaransi.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#katalog">Lihat Katalog <span>→</span></a>
+        <a class="btn-ghost" href="https://wa.me/6287811748266" target="_blank" rel="noopener">Chat Admin</a>
+      </div>
+      <div class="stat-row">
+        <div><b>4.9/5</b><span>Rating Pembeli</span></div>
+        <div><b>2.300+</b><span>Item Terjual</span></div>
+        <div><b>&lt;10 mnt</b><span>Rata‑rata Respon</span></div>
+      </div>
+    </div>
+    <div class="hero-plate">
+      <img src="https://picsum.photos/seed/uzzikhero/560/400" alt="Preview mobil showroom">
+      <div class="spec-line"><span>Item</span><span>BMW M4 F82</span></div>
+      <div class="spec-line"><span>Kategori</span><span>Sport Custom</span></div>
+      <div class="spec-line"><span>Status</span><span>Ready Stock</span></div>
+      <div class="spec-line"><span>Harga</span><span>Rp 30.000</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-item"><div class="ico">⚡</div><b>Proses Cepat</b><span>Item dikirim setelah pembayaran dikonfirmasi</span></div>
+      <div class="trust-item"><div class="ico">🛡️</div><b>Garansi Aman</b><span>Replace jika item bermasalah</span></div>
+      <div class="trust-item"><div class="ico">💬</div><b>CS Responsif</b><span>Admin siap bantu tiap hari</span></div>
+      <div class="trust-item"><div class="ico">🔒</div><b>Transaksi Jelas</b><span>Rincian pesanan tercatat rapi</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- KATALOG -->
+<section class="section-pad" id="katalog">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow-sm">Showroom Floor</span>
+        <h2>Katalog Item CPM2</h2>
+      </div>
+      <p>Pilih kategori atau cari nama mobil, livery, part, hingga koin yang kamu butuhkan.</p>
+    </div>
+
+    <div class="catalog-controls">
+      <div class="chip-row" id="chipRow">
+        <div class="chip active" data-cat="Semua">Semua</div>
+        <div class="chip" data-cat="Sport">Mobil Sport</div>
+        <div class="chip" data-cat="Sedan">Sedan Mewah</div>
+        <div class="chip" data-cat="SUV">SUV / Offroad</div>
+        <div class="chip" data-cat="Livery">Livery &amp; Skin</div>
+        <div class="chip" data-cat="Koin">Koin &amp; Saldo</div>
+        <div class="chip" data-cat="Akun">Akun Custom</div>
+      </div>
+      <div class="search-box">
+        <span>🔍</span>
+        <input type="text" id="searchInput" placeholder="Cari item, misal: GTR, livery drift, koin...">
+      </div>
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <b>Item tidak ditemukan</b>
+      Coba kata kunci lain atau pilih kategori berbeda.
+    </div>
+  </div>
+</section>
+
+<!-- CARA ORDER -->
+<section class="steps" id="cara-order">
+  <div class="wrap section-pad" style="padding-top:60px; padding-bottom:60px;">
+    <div class="sec-head" style="margin-bottom:20px;">
+      <div>
+        <span class="eyebrow-sm">Alur Transaksi</span>
+        <h2>Cara Order di Uzzik.ID</h2>
+      </div>
+    </div>
+  </div>
+  <div class="wrap step-grid" style="padding-bottom:20px;">
+    <div class="step"><div class="step-num">01</div><h3>Pilih Item</h3><p>Buka katalog, tentukan mobil, livery, atau koin yang kamu mau.</p></div>
+    <div class="step"><div class="step-num">02</div><h3>Isi Data Order</h3><p>Masukkan nama, nomor WhatsApp, dan ID server game kamu.</p></div>
+    <div class="step"><div class="step-num">03</div><h3>Konfirmasi &amp; Bayar</h3><p>Admin mengirim total tagihan dan metode pembayaran.</p></div>
+    <div class="step"><div class="step-num">04</div><h3>Item Dikirim</h3><p>Setelah pembayaran valid, item dipasang langsung ke akunmu.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONI -->
+<section class="section-pad" id="testimoni">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow-sm">Kata Mereka</span>
+        <h2>Testimoni Pembeli</h2>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>Livery yang aku pesan langsung terpasang, rapi banget prosesnya. Admin fast response juga.</p>
+        <div class="testi-who"><div class="testi-avatar">RD</div><div><b>Rendi D.</b><span>Pembeli Livery Racing</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>Beli koin di sini aman, harga juga bersaing dibanding toko lain. Sudah langganan tiap bulan.</p>
+        <div class="testi-who"><div class="testi-avatar">SA</div><div><b>Sarah A.</b><span>Pembeli Koin CPM2</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★☆</div>
+        <p>Mobil sport custom-nya keren, sesuai foto. Proses agak nunggu waktu ramai tapi tetap dikirim.</p>
+        <div class="testi-who"><div class="testi-avatar">FH</div><div><b>Fahri H.</b><span>Pembeli Mobil Sport</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-pad" id="faq">
+  <div class="wrap" style="max-width:820px;">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow-sm">Pertanyaan Umum</span>
+        <h2>FAQ</h2>
+      </div>
+    </div>
+    <div id="faqList"></div>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section class="section-pad" id="kontak">
+  <div class="wrap">
+    <div class="contact-band">
+      <div>
+        <h3>Butuh bantuan sebelum order?</h3>
+        <p>Chat admin Uzzik.ID untuk tanya stok, harga, atau request item custom yang belum ada di katalog.</p>
+      </div>
+      <a class="btn-primary" href="https://wa.me/6287811748266" target="_blank" rel="noopener">💬 Chat via WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="margin-bottom:12px;">UZZIK<span>.ID</span></div>
+        <p style="color:var(--text-dim); font-size:.85rem; max-width:280px;">Showroom digital untuk pemain Car Parking Multiplayer 2 — mobil, livery, koin, dan akun custom.</p>
+      </div>
+      <div>
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#katalog">Katalog</a></li>
+          <li><a href="#cara-order">Cara Order</a></li>
+          <li><a href="#testimoni">Testimoni</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <ul>
+          <li>WhatsApp: 0878‑1174‑8266</li>
+          <li>Instagram: @falzy._</li>
+          <li>Discord: fall_here</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Jam Layanan</h4>
+        <ul>
+          <li>Setiap hari</li>
+          <li>09.00 – 23.00 WIB</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Uzzik.ID. Semua hak dilindungi.</span>
+      <span>Dibuat untuk komunitas CPM2</span>
+    </div>
+    <p class="disclaimer">Uzzik.ID adalah toko independen milik penggemar dan tidak berafiliasi atau didukung secara resmi oleh developer Car Parking Multiplayer 2. Seluruh item yang dijual berupa konten dalam game.</p>
+  </div>
+</footer>
+
+<!-- PRODUCT DETAIL MODAL -->
+<div class="overlay" id="detailOverlay">
+  <div class="modal" id="detailModal">
+    <button class="modal-close" onclick="closeOverlay('detailOverlay')">✕</button>
+    <div class="modal-grid">
+      <div class="modal-gallery">
+        <div class="modal-main-img"><img id="modalMainImg" src="" alt=""></div>
+        <div class="modal-thumbs" id="modalThumbs"></div>
+      </div>
+      <div class="modal-info">
+        <span class="card-plate" id="modalPlate"></span>
+        <h2 id="modalTitle"></h2>
+        <span class="card-cat" id="modalCat"></span>
+        <div class="modal-specs" id="modalSpecs"></div>
+        <div class="modal-price" id="modalPrice"></div>
+        <div class="qty-row">
+          <span style="font-family:'Oswald',sans-serif; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--text-dim);">Jumlah</span>
+          <div class="qty-control">
+            <button onclick="changeQty(-1)">−</button>
+            <span id="qtyVal">1</span>
+            <button onclick="changeQty(1)">+</button>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-ghost" style="cursor:pointer;" onclick="addToCartFromModal()">+ Keranjang</button>
+          <button class="btn-primary" style="cursor:pointer;" onclick="orderNowFromModal()">Order Sekarang</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CART MODAL -->
+<div class="overlay" id="cartOverlay">
+  <div class="modal" style="max-width:480px;">
+    <button class="modal-close" onclick="closeOverlay('cartOverlay')">✕</button>
+    <div class="modal-info" style="padding:30px;">
+      <h2 style="margin-bottom:18px;">Keranjang Kamu</h2>
+      <div id="cartLines"></div>
+      <div class="order-summary" id="cartSummary" style="margin-top:16px;"></div>
+      <button class="btn-primary" style="width:100%; justify-content:center; cursor:pointer;" onclick="openOrderForm()">Lanjut ke Order</button>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER FORM MODAL -->
+<div class="overlay" id="orderOverlay">
+  <div class="modal order-modal" style="max-width:480px;">
+    <button class="modal-close" onclick="closeOverlay('orderOverlay')">✕</button>
+    <div class="modal-info">
+      <h2 style="margin-bottom:6px;">Form Order</h2>
+      <p style="color:var(--text-dim); font-size:.85rem; margin-bottom:20px;">Lengkapi data di bawah, lalu kirim ke admin via WhatsApp.</p>
+      <div class="order-summary" id="orderSummary"></div>
+      <div class="field">
+        <label>Nama Lengkap</label>
+        <input type="text" id="fName" placeholder="Nama kamu">
+      </div>
+      <div class="field">
+        <label>Nomor WhatsApp</label>
+        <input type="text" id="fPhone" placeholder="087811748266">
+      </div>
+      <div class="field">
+        <label>ID / Nama Server CPM2</label>
+        <input type="text" id="fServer" placeholder="Contoh: Server Asia 3 - ID 123456">
+      </div>
+      <div class="field">
+        <label>Catatan Tambahan (opsional)</label>
+        <textarea id="fNote" rows="2" placeholder="Warna, request tambahan, dll."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%; justify-content:center; cursor:pointer;" onclick="submitOrder()">📩 Kirim Order via WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<!-- Data (edit di sini untuk ganti produk, FAQ, dan nomor WhatsApp) -->
+<script src="data/config.js"></script>
+<script src="data/products.js"></script>
+<script src="data/faqs.js"></script>
+<!-- Logika aplikasi -->
+<script src="js/app.js"></script>
+</body>
+</html>
